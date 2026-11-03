@@ -60,9 +60,17 @@
   .quizpic { position: absolute; left: 0; right: 0; top: 280px; text-align: center; }
   .quizpic.hide svg { visibility: hidden; }
   .count {
-    position: absolute; right: 120px; top: 70px;
-    font-size: 200px; color: var(--red); line-height: 1;
+    position: absolute; right: 110px; top: 40px;
+    width: 270px; height: 270px; border-radius: 50%; border: 12px solid var(--red); background: #fff;
+    font-size: 190px; color: var(--red); line-height: 246px; text-align: center; z-index: 5;
   }
+  .count:empty, .tbadge:empty { display: none; }
+  @keyframes tickpop { 0% { transform: scale(1.7); } 60% { transform: scale(.9); } 100% { transform: scale(1); } }
+  @keyframes hotpulse { 0% { transform: scale(2); } 50% { transform: scale(.85); } 100% { transform: scale(1); } }
+  .bump { animation: tickpop .5s ease-out; }
+  .bump.hot { animation: hotpulse .55s ease-out; }
+  .count.hot, .tbadge.hot { background: var(--red); color: #fff; }
+  .timer.hot { color: #fff; background: var(--red); border-radius: 30px; padding: 0 24px; }
   .qmark { position: absolute; left: 0; right: 0; top: 290px; text-align: center; font-size: 300px; color: var(--soft); display: none; }
   .quizpic.hide + .qmark { display: block; }
 
@@ -121,7 +129,8 @@
   .win-stars svg.on { opacity: 1; animation: pop .55s ease-out; }
   [data-win].on .mascot { animation: bounce .7s ease-in-out infinite; }
   [data-win].on .mascot + .mascot { animation-delay: .35s; }
-  .tbadge { position: absolute; right: 90px; top: 60px; font-size: 110px; color: var(--red); }
+  .tbadge { position: absolute; right: 90px; top: 40px; width: 190px; height: 190px; border-radius: 50%;
+    border: 10px solid var(--red); background: #fff; font-size: 130px; line-height: 172px; text-align: center; color: var(--red); z-index: 5; }
   .say { font-size: 52px; color: #3d6488; font-weight: 400; }
   .sums.milk div { border: none; background: none; position: relative; width: 230px; height: 230px; line-height: normal; }
   .sums.milk img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 1.2px #6f6555) drop-shadow(0 0 0.6px #6f6555); }
@@ -184,14 +193,14 @@
       <div data-tf="8" data-extra="5" data-moved="2"></div>
     </div>
     <div class="center line step" data-step="0" data-until="1" style="top:595px">상자에 빈칸이 몇 개 있을까요?</div>
-    <div class="center ask step" data-step="1" data-until="1" data-think="10" style="top:700px">손가락으로 보여 주세요.</div>
+    <div class="center ask step" data-step="1" data-until="1" data-think="3" style="top:700px">손가락으로 보여 주세요.</div>
     <div class="center line step" data-step="2" data-until="2" style="top:595px">빈칸은 <span class="red">2개</span>예요. 밖에서 2개를 옮겨요.</div>
     <div class="center line step" data-step="3" data-until="3" style="top:595px">상자가 꽉 찼어요. 꽉 찬 상자는 <span class="red">10</span>!</div>
     <div class="center line step" data-step="4" data-until="5" style="top:595px">상자 밖에 남은 우유갑은 몇 개일까요?</div>
-    <div class="center ask step" data-step="5" data-until="5" data-think="10" style="top:700px">손가락으로 보여 주세요.</div>
+    <div class="center ask step" data-step="5" data-until="5" data-think="3" style="top:700px">손가락으로 보여 주세요.</div>
     <div class="center line step" data-step="6" data-until="6" style="top:595px">남은 우유갑은 <span class="red">3개</span>예요.</div>
     <div class="center eq step" data-step="7" data-until="8" style="top:585px">10 + 3 = ?</div>
-    <div class="center ask step" data-step="8" data-until="8" data-think="5" style="top:700px">다 함께 말해요.</div>
+    <div class="center ask step" data-step="8" data-until="8" data-think="3" style="top:700px">다 함께 말해요.</div>
     <div class="center eq step" data-step="9" style="top:585px">10 + 3 = <b>13</b></div>
     <div class="center say step" data-step="9" style="top:755px">그래서 8 + 5 = 13이에요.</div>
   </section>
@@ -273,8 +282,8 @@
     <div class="rise step" data-step="7" style="position:absolute; left:1140px; top:560px">+1</div>
     <div class="ask step" data-step="1" data-until="2" style="position:absolute; left:90px; top:280px; font-size:52px; white-space:nowrap">다 함께 말해요</div>
     <div class="note step" data-step="2" data-until="2" style="position:absolute; left:430px; top:462px; font-size:44px; white-space:nowrap">꽉 찬 상자 = <span class="red">10</span></div>
-    <div class="ask step" data-step="3" data-until="3" data-think="10" style="position:absolute; left:90px; top:280px; font-size:52px; white-space:nowrap">각자 계산해요</div>
-    <div class="ask step" data-step="5" data-until="5" data-think="5" style="position:absolute; left:90px; top:280px; font-size:52px; white-space:nowrap">다 함께 말해요</div>
+    <div class="ask step" data-step="3" data-until="3" data-think="3" style="position:absolute; left:90px; top:280px; font-size:52px; white-space:nowrap">각자 계산해요</div>
+    <div class="ask step" data-step="5" data-until="5" data-think="3" style="position:absolute; left:90px; top:280px; font-size:52px; white-space:nowrap">다 함께 말해요</div>
     <div class="note step" data-step="7" data-until="7" style="position:absolute; left:90px; top:280px; font-size:60px; white-space:nowrap">1씩 커지면 <span class="red">합도 1씩!</span></div>
     <div class="note step" data-step="8" style="position:absolute; left:90px; top:280px; font-size:66px; white-space:nowrap"><span class="red">10을 만들어 더하기</span></div>
   </section>
@@ -292,7 +301,7 @@
     <div class="center line step" data-step="1" data-until="1" style="top:595px">두 상자 모두 <span class="red">7개</span>예요.</div>
     <div class="center line step" data-step="2" data-until="2" style="top:595px">같은 수를 더해요. <span class="red">같은 수 더하기</span></div>
     <div class="center eq step" data-step="3" data-until="4" style="top:585px">7 + 7 = ?</div>
-    <div class="center ask step" data-step="4" data-until="4" data-think="5" style="top:700px">다 함께 말해요.</div>
+    <div class="center ask step" data-step="4" data-until="4" data-think="3" style="top:700px">다 함께 말해요.</div>
     <div class="center eq step" data-step="5" style="top:585px">7 + 7 = <b>14</b></div>
     <div class="center line red step" data-step="5" style="top:755px">같은 수 더하기!</div>
   </section>
@@ -351,14 +360,14 @@
       <div data-tf="6" data-extra="7" data-moved="4"></div>
     </div>
     <div class="center line step" data-step="0" data-until="1" style="top:595px">상자에 빈칸이 몇 개 있을까요?</div>
-    <div class="center ask step" data-step="1" data-until="1" data-think="10" style="top:700px">손가락으로 보여 주세요.</div>
+    <div class="center ask step" data-step="1" data-until="1" data-think="3" style="top:700px">손가락으로 보여 주세요.</div>
     <div class="center line step" data-step="2" data-until="2" style="top:595px">빈칸은 <span class="red">4개</span>예요. 밖에서 4개를 옮겨요.</div>
     <div class="center line step" data-step="3" data-until="3" style="top:595px">상자가 꽉 찼어요. 꽉 찬 상자는 <span class="red">10</span>!</div>
     <div class="center line step" data-step="4" data-until="5" style="top:595px">상자 밖에 남은 우유갑은 몇 개일까요?</div>
-    <div class="center ask step" data-step="5" data-until="5" data-think="10" style="top:700px">손가락으로 보여 주세요.</div>
+    <div class="center ask step" data-step="5" data-until="5" data-think="3" style="top:700px">손가락으로 보여 주세요.</div>
     <div class="center line step" data-step="6" data-until="6" style="top:595px">남은 우유갑은 <span class="red">3개</span>예요.</div>
     <div class="center eq step" data-step="7" data-until="8" style="top:585px">10 + 3 = ?</div>
-    <div class="center ask step" data-step="8" data-until="8" data-think="5" style="top:700px">다 함께 말해요.</div>
+    <div class="center ask step" data-step="8" data-until="8" data-think="3" style="top:700px">다 함께 말해요.</div>
     <div class="center eq step" data-step="9" style="top:585px">10 + 3 = <b>13</b></div>
     <div class="center say step" data-step="9" style="top:755px">그래서 6 + 7 = 13이에요.</div>
   </section>
@@ -514,6 +523,7 @@
   }
   var sfx = {
     tick: function () { tone(880, 0, 0.15, 'square', 0.12); },
+    hot: function () { tone(988, 0, 0.18, 'square', 0.22); tone(1319, 0.02, 0.18, 'triangle', 0.15); },
     pop: function () { tone(520, 0, 0.12); tone(260, 0.1, 0.25); },
     ding: function () { tone(784, 0, 0.18); tone(1047, 0.12, 0.35); },
     star: function () { tone(659, 0, 0.12); tone(784, 0.1, 0.12); tone(1047, 0.2, 0.4); },
@@ -573,6 +583,7 @@
     s.querySelectorAll('[data-step]').forEach(function (e) { m = Math.max(m, +e.dataset.step); });
     return m;
   }
+  function bump(el, hot) { el.classList.toggle('hot', !!hot); el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
   function clearTimers() { timers.forEach(clearInterval); timers.forEach(clearTimeout); timers = []; }
   var lastSlide = -1;
   function render(entering) {
@@ -609,11 +620,11 @@
     badge.textContent = '';
     var th = s.querySelector('[data-think][data-step="' + step + '"]');
     if (th && entering) {
-      var tn = +th.dataset.think; badge.textContent = tn;
+      var tn = +th.dataset.think; badge.textContent = tn; bump(badge, tn <= 3);
       window.__think = setInterval(function () {
         tn--;
-        if (tn > 0) { badge.textContent = tn; if (tn <= 3) sfx.tick(); }
-        else { clearInterval(window.__think); badge.textContent = ''; sfx.bell(); }
+        if (tn > 0) { badge.textContent = tn; bump(badge, tn <= 3); if (tn <= 3) sfx.hot(); }
+        else { clearInterval(window.__think); badge.textContent = ''; badge.classList.remove('hot'); sfx.bell(); }
       }, 1000);
     }
     s.querySelectorAll('.quizpic').forEach(function (q) { q.classList.add('hide'); });
@@ -622,11 +633,11 @@
       if (+q.dataset.step !== step) { q.style.display = step > +q.dataset.step ? 'none' : ''; return; }
       q.style.display = '';
       if (!entering) return;
-      var n = 5; q.classList.remove('hide'); cnt.textContent = n; sfx.tick();
+      var n = 5; q.classList.remove('hide'); cnt.textContent = n; bump(cnt, false); sfx.tick();
       var t = setInterval(function () {
         n--;
-        if (n > 0) { cnt.textContent = n; sfx.tick(); }
-        else { clearInterval(t); cnt.textContent = ''; q.classList.add('hide'); sfx.pop(); }
+        if (n > 0) { cnt.textContent = n; bump(cnt, n <= 3); if (n <= 3) sfx.hot(); else sfx.tick(); }
+        else { clearInterval(t); cnt.textContent = ''; cnt.classList.remove('hot'); q.classList.add('hide'); sfx.pop(); }
       }, 1000);
       timers.push(t);
     });
@@ -641,7 +652,12 @@
       var left = 60;
       function show() { tm.textContent = Math.floor(left / 60) + ':' + ('0' + (left % 60)).slice(-2); }
       show();
-      var t = setInterval(function () { left--; show(); if (left <= 0) clearInterval(t); }, 1000);
+      tm.classList.remove('hot');
+      var t = setInterval(function () {
+        left--; show();
+        if (left <= 3 && left > 0) { bump(tm, true); sfx.hot(); }
+        if (left <= 0) { clearInterval(t); tm.classList.remove('hot'); sfx.bell(); }
+      }, 1000);
       timers.push(t);
     });
   }
