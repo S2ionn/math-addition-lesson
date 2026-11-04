@@ -547,7 +547,7 @@
     <div class="rule"></div>
     <div class="center" style="top:250px; font-size:160px">수학 익힘책</div>
     <div class="center red" style="top:440px; font-size:120px">56 ~ 57쪽</div>
-    <div class="center say" style="top:640px">다 풀면 선생님께 배달 완료 도장을 받아요.</div>
+    <div class="center say" style="top:640px">다 풀면 도장을 받고, 짝을 도와줘요.</div>
     <div class="mascot" data-mascot="230" data-pose="think" style="right:120px; bottom:40px"></div>
   </section>
 
@@ -929,7 +929,10 @@
         return e.matches('.red, b') || e.querySelector('.red, b');
       });
       var stair = [].filter.call(fresh, function (e) { return e.classList.contains('stair'); })[0];
-      // 단계마다 나던 소리(빨간 글자, 계단, 우유갑 옮기기)는 넣지 않는다
+      // 단계마다 나던 소리(빨간 글자, 계단)는 넣지 않는다. 우유갑이 상자로 옮겨질 때만 한 개마다 소리를 낸다
+      var moving = [];
+      [].forEach.call(fresh, function (e) { [].push.apply(moving, e.querySelectorAll('.movein')); });
+      moving.forEach(function (g, i) { timers.push(setTimeout(sfx.glide, i * 150)); });
     }
     else if (cur < slides.length - 1) {
       cur++; step = 0; render(true);
